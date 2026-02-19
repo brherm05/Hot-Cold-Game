@@ -14,11 +14,12 @@ const getRandomInt = (max = 100) => {
 // event handler functions
 const guessClick = () => {
     const guess = parseInt(document.querySelector("#number").value);
+    const best = parseInt(document.querySelector("#best_score").textContent)
 
     let message = "";
     if (isNaN(guess)) {
         message = "Not a valid number. Please enter a valid number."
-    } else if (guess < 1 || guess > 10) {
+    } else if (guess < 1 || guess > 100) {
         message = "Invalid number. Enter a number between 1 and 10.";
     } else if (guess < randomNum) {
         message = "Too small. Try again.";
@@ -30,12 +31,15 @@ const guessClick = () => {
         tries++;
         const lastWord = (tries === 1) ? "try" : "tries";
         message = `You guessed it in ${tries} ${lastWord}!`;
+        if (tries < best || isNaN(best)) {
+            document.querySelector("#best_score").textContent = tries;
+        }
     }
     document.querySelector("#message").textContent = message;
 };
 
 const playAgainClick = () => {
-    randomNum = getRandomInt(10);
+    randomNum = getRandomInt(100);
     tries = 0;
     document.querySelector("#number").value = "";
     document.querySelector("#message").textContent = "";
