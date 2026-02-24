@@ -7,14 +7,21 @@ let tries = 0;
 // helper function
 const getRandomInt = (max = 100) => {
     let num = Math.random() * max;  // get a random number between 0 and max
-    num = (Math.floor(num)) + 1;           // round up to nearest integer
+    num = (Math.floor(num)) + 1;// round up to nearest integer
+    console.log(num);
     return num;
 };
+
+const updateBestScore = () => {
+    const best = parseInt(document.querySelector("#best_score").textContent);
+    if (tries < best || isNaN(best)) {
+        document.querySelector("#best_score").textContent = tries;
+    }
+}
 
 // event handler functions
 const guessClick = () => {
     const guess = parseInt(document.querySelector("#number").value);
-    const best = parseInt(document.querySelector("#best_score").textContent)
 
     let message = "";
     if (isNaN(guess)) {
@@ -27,13 +34,14 @@ const guessClick = () => {
         return;
     }
     tries++;
-    let color = '';
+    let color = 'black';
     let distance = Math.abs(randomNum - guess);
     switch (true) {
         case (distance === 0):
             const lastWord = (tries === 1) ? "try" : "tries";
             message = `Fire! You guessed it in ${tries} ${lastWord}!`;
             color = "green";
+            updateBestScore();
             break;
         case (distance <= 5):
             message = "Hot! (Within 5)";
@@ -75,7 +83,7 @@ const playAgainClick = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     playAgainClick(); // initial a new game
-    console.log(randomNum);
+
 
 
     document.querySelector("#guess").addEventListener(
