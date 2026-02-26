@@ -16,7 +16,6 @@ let tries = 0;
 const getRandomInt = (max = 100) => {
     let num = Math.random() * max;  // get a random number between 0 and max
     num = (Math.floor(num)) + 1;// round up to nearest integer
-    console.log(num);
     return num;
 };
 
@@ -85,6 +84,7 @@ const guessClick = () => {
 
 const playAgainClick = () => {
     randomNum = getRandomInt(100);
+    document.querySelector("#history").innerHTML = "";
     tries = 0;
     document.querySelector("#number").value = "";
     document.querySelector("#message").textContent = "";
