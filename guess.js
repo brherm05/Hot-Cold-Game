@@ -1,3 +1,11 @@
+/*
+Hot & Cold Game
+Author: Brayden Hermanson
+Summary: This program is a number guessing game, a number between 1 and 100 is chosen, and the user must guess
+the number using input provided by the program for every guess.
+Completion Date: 2/26/2026
+GitHub: https://github.com/brherm05/Hot-Cold-Game
+ */
 "use strict";
 
 // global variables 
