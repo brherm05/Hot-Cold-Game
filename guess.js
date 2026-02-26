@@ -21,6 +21,7 @@ const updateBestScore = () => {
 
 // event handler functions
 const guessClick = () => {
+    document.getElementById("number").focus();
     const guess = parseInt(document.querySelector("#number").value);
 
     let message = "";
@@ -84,10 +85,14 @@ const playAgainClick = () => {
 document.addEventListener("DOMContentLoaded", () => {
     playAgainClick(); // initial a new game
 
-
-
     document.querySelector("#guess").addEventListener(
         "click", guessClick);
     document.querySelector("#play_again").addEventListener(
         "click", playAgainClick);
+
+    document.querySelector("#number").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            guessClick();
+        }
+    });
 });
