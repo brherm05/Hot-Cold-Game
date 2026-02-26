@@ -13,6 +13,7 @@ Download index.html, guess.js and main.css and place them in the same directory,
 in a compatible browser.
 
 ## 🔮 Preview
-
+![Image of the game being won](/assets/preview.png "The Game Has Been Won")
+![Image of the game being played](/assets/preview.png "So Close!")
 ## 👤 Author
 [Brayden Hermanson](https://github.com/brherm05 "My GitHub Page")
